@@ -1,0 +1,17 @@
+{
+    "pictures": [
+        {
+            "id": "0",
+            "imgUrl": "https://raw.githubusercontent.com/xuehuayous/PullToRefresh-Demo/master/AutoHome/picture/loopview_picture3.jpg"
+        },
+        {
+            "id": "1",
+            "imgUrl": "https://raw.githubusercontent.com/xuehuayous/PullToRefresh-Demo/master/AutoHome/picture/loopview_picture2.jpg"
+        },
+        {
+
+            "id": "2",
+            "imgUrl": "https://raw.githubusercontent.com/xuehuayous/PullToRefresh-Demo/master/AutoHome/picture/loopview_picture1.jpg"
+        }
+    ]
+}
