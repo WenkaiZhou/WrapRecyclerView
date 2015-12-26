@@ -25,15 +25,19 @@ import com.kevin.wraprecyclerview.sample.utils.LocalFileUtils;
 public class WarpAdapterActivity extends AppCompatActivity {
 
     private boolean isFirstData = true;
-
     private RecyclerView mRecyclerView;
     // 数据适配器包装类
     private WrapAdapter<PictureAdapter> mWrapAdapter;
+
+    private String refreshDate, addHeader, addFooter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_wrap_adapter);
+        refreshDate = getString(R.string.menu_refresh_data);
+        addHeader = getString(R.string.menu_add_header);
+        addFooter = getString(R.string.menu_add_footer);
 
         initViews();
     }
@@ -44,8 +48,8 @@ public class WarpAdapterActivity extends AppCompatActivity {
     private void initViews() {
         mRecyclerView = (RecyclerView) this.findViewById(R.id.wrap_adapter_act_recycler_view);
 //        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-        mRecyclerView.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
-//        mRecyclerView.setLayoutManager(new GridLayoutManager(this, 2));
+        mRecyclerView.setLayoutManager(new StaggeredGridLayoutManager(3, StaggeredGridLayoutManager.VERTICAL));
+//        mRecyclerView.setLayoutManager(new GridLayoutManager(this, 3));
 
         // 创建数据适配器并将数据适配器添加到包装类中
         mWrapAdapter = new WrapAdapter<>(new PictureAdapter(this));
@@ -55,21 +59,24 @@ public class WarpAdapterActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        menu.add("刷新数据");
-        menu.add("添加头部");
+        menu.add(refreshDate);
+        menu.add(addHeader);
+        menu.add(addFooter);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getTitle().toString().equals("刷新数据")) {
+        if (item.getTitle().toString().equals(refreshDate)) {
 
             // 初始化数据,这里模拟网络获取数据
             PictureData pictureData = initData();
             mWrapAdapter.getWrappedAdapter().setItemLists(pictureData.pictures);
             mWrapAdapter.notifyDataSetChanged();
-        } else if(item.getTitle().toString().equals("添加头部")) {
+        } else if(item.getTitle().toString().equals(addHeader)) {
             addHeaderView();
+        } else if(item.getTitle().toString().equals(addFooter)) {
+            addFooterView();
         }
         return true;
     }
@@ -102,6 +109,25 @@ public class WarpAdapterActivity extends AppCompatActivity {
         FrameLayout layout = (FrameLayout) inflater.inflate(R.layout.recycler_header, null);
         AdLoopView mAdLoopView = (AdLoopView) layout.findViewById(R.id.home_frag_rotate_vp);
         mWrapAdapter.addHeaderView(layout);
+
+        // 初始化LoopView数据
+        String json = LocalFileUtils.getStringFormAsset(this, "loopview.json");
+        mAdLoopView.refreshData(json);
+        mAdLoopView.startAutoLoop();
+    }
+
+    /**
+     * 添加头部View LoopView
+     *
+     * 这里使用的是LoopView开源项目，项目地址：https://github.com/xuehuayous/Android-LoopView
+     *
+     * @return void
+     */
+    private void addFooterView() {
+        LayoutInflater inflater = LayoutInflater.from(this);
+        FrameLayout layout = (FrameLayout) inflater.inflate(R.layout.recycler_header, null);
+        AdLoopView mAdLoopView = (AdLoopView) layout.findViewById(R.id.home_frag_rotate_vp);
+        mWrapAdapter.addFooterView(layout);
 
         // 初始化LoopView数据
         String json = LocalFileUtils.getStringFormAsset(this, "loopview.json");

@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Sample</string>
+
+    <string name="menu_refresh_data">refresh data</string>
+    <string name="menu_add_header">add header</string>
+    <string name="menu_add_footer">add footer</string>
 </resources>

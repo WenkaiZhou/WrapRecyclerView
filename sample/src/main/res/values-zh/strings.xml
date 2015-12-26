@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="menu_refresh_data">刷新数据</string>
+  <string name="menu_add_header">添加头部</string>
+  <string name="menu_add_footer">添加尾部</string>
+</resources>

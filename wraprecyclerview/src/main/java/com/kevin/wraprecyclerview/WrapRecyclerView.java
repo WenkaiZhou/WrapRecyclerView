@@ -125,7 +125,6 @@ public class WrapRecyclerView extends RecyclerView {
     @Override
     public void setLayoutManager(LayoutManager layout) {
         super.setLayoutManager(layout);
-        // 根据布局管理器设置分割线
         if (layout instanceof GridLayoutManager || layout instanceof StaggeredGridLayoutManager) {
             this.shouldAdjustSpanSize = true;
         }
