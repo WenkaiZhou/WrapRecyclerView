@@ -7,7 +7,7 @@ WrapRecyclerView is a RecyclerView that can be add header and footer. And provid
 
 ![Screenshot](https://raw.githubusercontent.com/xuehuayous/WrapRecyclerView/master/sample/sample.gif)
 
-## Using [Modified PullToRefresh](https://github.com/xuehuayous/Android-PullToRefresh) in your application
+## Using [WrapRecyclerView](https://github.com/xuehuayous/WrapRecyclerView) in your application
 
 If you are building with Gradle, simply add the following line to the `dependencies` section of your `build.gradle` file:
 

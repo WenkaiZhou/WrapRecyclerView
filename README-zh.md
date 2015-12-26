@@ -7,7 +7,7 @@ WrapRecyclerView 是一个可以添加头部和尾部的RecyclerView，并且提
 
 ![Screenshot](https://raw.githubusercontent.com/xuehuayous/WrapRecyclerView/master/sample/sample.gif)
 
-## 在项目中使用[PullToRefresh](https://github.com/xuehuayous/Android-PullToRefresh) 
+## 在项目中使用[WrapRecyclerView](https://github.com/xuehuayous/WrapRecyclerView) 
 
 如果您的项目使用 Gradle 构建, 只需要在您的`build.gradle`文件添加下面一行到 `dependencies` :
 
