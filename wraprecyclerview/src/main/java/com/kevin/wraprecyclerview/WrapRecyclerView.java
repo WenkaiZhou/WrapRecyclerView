@@ -65,7 +65,7 @@ public class WrapRecyclerView extends RecyclerView {
      * @return The previously set adapter
      */
     @Override
-    public Adapter getAdapter() {
+    public WrapAdapter getAdapter() {
         return mWrapAdapter;
     }
 
@@ -74,8 +74,6 @@ public class WrapRecyclerView extends RecyclerView {
      *
      * @return T:
      * @version 1.0
-     * @date 2015-12-25
-     * @Author zhou.wenkai
      */
     public Adapter getWrappedAdapter() {
         if(mWrapAdapter == null) {
@@ -88,10 +86,7 @@ public class WrapRecyclerView extends RecyclerView {
      * Adds a header view
      *
      * @param view
-     * @return void:
      * @version 1.0
-     * @date 2015-12-25
-     * @Author zhou.wenkai
      */
     public void addHeaderView(View view) {
         if (null == view) {
@@ -107,10 +102,7 @@ public class WrapRecyclerView extends RecyclerView {
      * Adds a footer view
      *
      * @param view
-     * @return void:
      * @version 1.0
-     * @date 2015-12-25
-     * @Author zhou.wenkai
      */
     public void addFooterView(View view) {
         if (null == view) {
@@ -133,11 +125,8 @@ public class WrapRecyclerView extends RecyclerView {
     /**
      * gets the headers view
      *
-     * @return
-     * @return List<View>:
+     * @return List:
      * @version 1.0
-     * @date 2015-12-25
-     * @Author zhou.wenkai
      */
     public List<View> getHeadersView() {
         if(mWrapAdapter == null) {
@@ -149,11 +138,8 @@ public class WrapRecyclerView extends RecyclerView {
     /**
      * gets the footers view
      *
-     * @return
-     * @return List<View>:
+     * @return List:
      * @version 1.0
-     * @date 2015-12-25
-     * @Author zhou.wenkai
      */
     public List<View> getFootersView() {
         if(mWrapAdapter == null) {
@@ -166,10 +152,7 @@ public class WrapRecyclerView extends RecyclerView {
      * Setting the visibility of the header views
      *
      * @param shouldShow
-     * @return void:
      * @version 1.0
-     * @date 2015-12-25
-     * @Author zhou.wenkai
      */
     public void setFooterVisibility(boolean shouldShow) {
         if(mWrapAdapter == null) {
@@ -182,10 +165,7 @@ public class WrapRecyclerView extends RecyclerView {
      * Setting the visibility of the footer views
      *
      * @param shouldShow
-     * @return void:
      * @version 1.0
-     * @date 2015-12-25
-     * @Author zhou.wenkai
      */
     public void setHeaderVisibility(boolean shouldShow) {
         if(mWrapAdapter == null) {
@@ -199,8 +179,6 @@ public class WrapRecyclerView extends RecyclerView {
      *
      * @return number of headers
      * @version 1.0
-     * @date 2015-12-25
-     * @Author zhou.wenkai
      */
     public int getHeadersCount() {
         if(mWrapAdapter == null) {
@@ -214,8 +192,6 @@ public class WrapRecyclerView extends RecyclerView {
      *
      * @return the number of footers
      * @version 1.0
-     * @date 2015-12-25
-     * @Author zhou.wenkai
      */
     public int getFootersCount() {
         if(mWrapAdapter == null) {

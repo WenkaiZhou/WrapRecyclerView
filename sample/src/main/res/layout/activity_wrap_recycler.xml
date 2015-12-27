@@ -3,4 +3,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <com.kevin.wraprecyclerview.WrapRecyclerView
+        android:id="@+id/wrap_recycler_act_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
 </RelativeLayout>

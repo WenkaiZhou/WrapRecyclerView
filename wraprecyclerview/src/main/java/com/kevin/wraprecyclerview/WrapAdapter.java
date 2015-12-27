@@ -15,7 +15,7 @@ import java.util.List;
  *
  * WrapAdapter
  *
- * @author zhou.wenkai ,Created on 2015-11-24 10:48:29</br>
+ * @author zhou.wenkai ,Created on 2015-11-24 10:48:29
  * Major Function：A RecyclerView.Adapter that allows for headers and footers as well.
  *
  * 注:如果您修改了本类请填写以下内容作为记录，如非本人操作劳烦通知，谢谢！！！
@@ -41,7 +41,7 @@ public class WrapAdapter<T extends RecyclerView.Adapter> extends RecyclerView.Ad
 	public class FixedViewInfo {
 		/** The view to add to the list */
 		public View view;
-		/** The data backing the view. This is returned from {@link RecyclerView.Adapter#getItemViewType(int)}. */
+		/** The data backing the view. This is returned from {RecyclerView.Adapter#getItemViewType(int)}. */
 		public int viewType;
 	}
 
@@ -60,9 +60,6 @@ public class WrapAdapter<T extends RecyclerView.Adapter> extends RecyclerView.Ad
 	 * Gets the real adapter
 	 *
 	 * @return T:
-	 * @version 1.0
-	 * @date 2015-11-24
-	 * @Author zhou.wenkai
 	 */
 	public T getWrappedAdapter() {
 		return mRealAdapter;
@@ -72,10 +69,6 @@ public class WrapAdapter<T extends RecyclerView.Adapter> extends RecyclerView.Ad
 	 * Adds a header view
 	 *
 	 * @param view
-	 * @return void:
-	 * @version 1.0
-	 * @date 2015-11-24
-	 * @Author zhou.wenkai
 	 */
 	public void addHeaderView(View view) {
 		if (null == view) {
@@ -92,10 +85,6 @@ public class WrapAdapter<T extends RecyclerView.Adapter> extends RecyclerView.Ad
 	 * Adds a footer view
 	 *
 	 * @param view
-	 * @return void:
-	 * @version 1.0
-	 * @date 2015-11-24
-	 * @Author zhou.wenkai
 	 */
 	public void addFooterView(View view) {
 		if (null == view) {
@@ -111,11 +100,8 @@ public class WrapAdapter<T extends RecyclerView.Adapter> extends RecyclerView.Ad
 	/**
 	 * gets the headers view
 	 *
-	 * @return
-	 * @return List<View>:
+	 * @return List:
 	 * @version 1.0
-	 * @date 2015-11-24
-	 * @Author zhou.wenkai
 	 */
 	public List<View> getHeadersView() {
 		List<View> viewList = new ArrayList<View>(getHeadersCount());
@@ -128,11 +114,8 @@ public class WrapAdapter<T extends RecyclerView.Adapter> extends RecyclerView.Ad
 	/**
 	 * gets the footers view
 	 *
-	 * @return
-	 * @return List<View>:
+	 * @return List:
 	 * @version 1.0
-	 * @date 2015-11-24
-	 * @Author zhou.wenkai
 	 */
 	public List<View> getFootersView() {
 		List<View> viewList = new ArrayList<View>(getHeadersCount());
@@ -146,10 +129,7 @@ public class WrapAdapter<T extends RecyclerView.Adapter> extends RecyclerView.Ad
 	 * adjust the GridLayoutManager SpanSize
 	 *
 	 * @param recycler
-	 * @return void:
 	 * @version 1.0
-	 * @date 2015-11-24
-	 * @Author zhou.wenkai
 	 */
 	public void adjustSpanSize(RecyclerView recycler) {
 		if(recycler.getLayoutManager() instanceof GridLayoutManager) {
@@ -175,10 +155,7 @@ public class WrapAdapter<T extends RecyclerView.Adapter> extends RecyclerView.Ad
 	 * Setting the visibility of the header views
 	 *
 	 * @param shouldShow
-	 * @return void:
 	 * @version 1.0
-	 * @date 2015-11-24
-	 * @Author zhou.wenkai
 	 */
 	public void setHeaderVisibility(boolean shouldShow) {
 		for (FixedViewInfo fixedViewInfo : mHeaderViewInfos) {
@@ -191,10 +168,7 @@ public class WrapAdapter<T extends RecyclerView.Adapter> extends RecyclerView.Ad
 	 * Setting the visibility of the footer views
 	 *
 	 * @param shouldShow
-	 * @return void:
 	 * @version 1.0
-	 * @date 2015-11-24
-	 * @Author zhou.wenkai
 	 */
 	public void setFooterVisibility(boolean shouldShow) {
 		for (FixedViewInfo fixedViewInfo : mFooterViewInfos) {
@@ -208,8 +182,6 @@ public class WrapAdapter<T extends RecyclerView.Adapter> extends RecyclerView.Ad
 	 *
 	 * @return number of headers
 	 * @version 1.0
-	 * @date 2015-11-24
-	 * @Author zhou.wenkai
 	 */
 	public int getHeadersCount() {
 		return mHeaderViewInfos.size();
@@ -220,8 +192,6 @@ public class WrapAdapter<T extends RecyclerView.Adapter> extends RecyclerView.Ad
 	 *
 	 * @return the number of footers
 	 * @version 1.0
-	 * @date 2015-11-24
-	 * @Author zhou.wenkai
 	 */
 	public int getFootersCount() {
 		return mFooterViewInfos.size();
