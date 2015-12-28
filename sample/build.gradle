@@ -28,4 +28,5 @@ dependencies {
     compile project(':wraprecyclerview')
     compile 'com.kevin:jsontool:1.0.0'
     compile 'com.kevin:loopview:1.0.4'
+//    compile 'com.kevin:wraprecyclerview:1.0.1'
 }

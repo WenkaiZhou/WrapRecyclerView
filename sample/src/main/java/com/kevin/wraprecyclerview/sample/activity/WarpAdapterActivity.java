@@ -51,9 +51,13 @@ public class WarpAdapterActivity extends AppCompatActivity {
         mRecyclerView.setLayoutManager(new StaggeredGridLayoutManager(3, StaggeredGridLayoutManager.VERTICAL));
 //        mRecyclerView.setLayoutManager(new GridLayoutManager(this, 3));
 
-        // 创建数据适配器并将数据适配器添加到包装类中
-        mWrapAdapter = new WrapAdapter<>(new PictureAdapter(this));
+        // 创建RecyclerView的数据适配器
+        PictureAdapter pictureAdapter = new PictureAdapter(this);
+        // 设置将要添加的头部和尾部占据一行
+        mWrapAdapter = new WrapAdapter<>(pictureAdapter);
+        // 设置头部和尾部占据一行
         mWrapAdapter.adjustSpanSize(mRecyclerView);
+        // 设置RecyclerView的数据适配器(适配器包装)
         mRecyclerView.setAdapter(mWrapAdapter);
     }
 
@@ -71,7 +75,10 @@ public class WarpAdapterActivity extends AppCompatActivity {
 
             // 初始化数据,这里模拟网络获取数据
             PictureData pictureData = initData();
+            mWrapAdapter.getWrappedAdapter();
+            // 获取真实数据适配器并设置数据
             mWrapAdapter.getWrappedAdapter().setItemLists(pictureData.pictures);
+            // 包装适配器通知数据变更
             mWrapAdapter.notifyDataSetChanged();
         } else if(item.getTitle().toString().equals(addHeader)) {
             addHeaderView();
