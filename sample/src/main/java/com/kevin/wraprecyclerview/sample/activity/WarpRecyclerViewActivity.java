@@ -2,7 +2,6 @@ package com.kevin.wraprecyclerview.sample.activity;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -11,7 +10,6 @@ import android.widget.FrameLayout;
 
 import com.kevin.jsontool.JsonTool;
 import com.kevin.loopview.AdLoopView;
-import com.kevin.wraprecyclerview.WrapAdapter;
 import com.kevin.wraprecyclerview.WrapRecyclerView;
 import com.kevin.wraprecyclerview.sample.R;
 import com.kevin.wraprecyclerview.sample.adapter.PictureAdapter;
@@ -28,7 +26,6 @@ public class WarpRecyclerViewActivity extends AppCompatActivity {
     private String refreshDate, addHeader, addFooter;
     private boolean isFirstData = true;
     private PictureAdapter mAdapter;
-    private WrapAdapter mWrapAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,8 +51,6 @@ public class WarpRecyclerViewActivity extends AppCompatActivity {
         // 创建数据适配器
         mAdapter = new PictureAdapter(this);
         mWrapRecyclerView.setAdapter(mAdapter);
-        // 获取包装类适配器，因为要用它去刷新数据
-        mWrapAdapter = mWrapRecyclerView.getAdapter();
     }
 
     @Override
@@ -74,7 +69,6 @@ public class WarpRecyclerViewActivity extends AppCompatActivity {
             PictureData pictureData = initData();
 
             mAdapter.setItemLists(pictureData.pictures); // 数据适配器设置数据
-            mWrapAdapter.notifyDataSetChanged();         // 包装类适配器刷新数据
         } else if(item.getTitle().toString().equals(addHeader)) {
             addHeaderView();
         } else if(item.getTitle().toString().equals(addFooter)) {

@@ -75,7 +75,6 @@ public class WarpAdapterActivity extends AppCompatActivity {
 
             // 初始化数据,这里模拟网络获取数据
             PictureData pictureData = initData();
-            mWrapAdapter.getWrappedAdapter();
             // 获取真实数据适配器并设置数据
             mWrapAdapter.getWrappedAdapter().setItemLists(pictureData.pictures);
             // 包装适配器通知数据变更
