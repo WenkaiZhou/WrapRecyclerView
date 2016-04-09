@@ -103,6 +103,15 @@ public abstract class BaseRecyclerAdapter<T, VH extends RecyclerView.ViewHolder>
     }
 
     /**
+     * 添加数据,默认添加到尾部
+     *
+     * @param listDatas
+     */
+    public void add(List<T> listDatas) {
+        addToLast(listDatas);
+    }
+
+    /**
      * 添加数据到尾部
      *
      * @param listDatas
