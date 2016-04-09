@@ -14,7 +14,7 @@ WrapRecyclerView 是一个可以添加头部和尾部的RecyclerView，并且提
 如果您的项目使用 Gradle 构建, 只需要在您的`build.gradle`文件添加下面一行到 `dependencies` :
 
 ```
-	compile 'com.kevin:wraprecyclerview:1.0.2'
+	compile 'com.kevin:wraprecyclerview:1.0.3'
 ```
 
 ## 使用说明
