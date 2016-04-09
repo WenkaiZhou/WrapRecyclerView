@@ -14,7 +14,7 @@ In the example, The Android-LoopView is used as rotation picture, you can use it
 If you are building with Gradle, simply add the following line to the `dependencies` section of your `build.gradle` file:
 
 ```
-	compile 'com.kevin:wraprecyclerview:1.0.3'
+	compile 'com.kevin:wraprecyclerview:1.0.5'
 ```
 
 # How to use
@@ -35,12 +35,10 @@ Provides two sets of implementation of the program, you can choose according to 
         // Gets the wrapper adapter because you should to use it to refresh the data
         WrapAdapter mWrapAdapter = mWrapRecyclerView.getAdapter();
 
-- Change data by **real data adapter** and **wrapperadapter** notification data change
+- Change data by **real data adapter** 
 
 		// real data adapter sets the data
         mAdapter.setItemLists(pictureData.pictures);
-		// Wrapper adapter notification data change
-        mWrapAdapter.notifyDataSetChanged();
 
 - Provides an **BaseRecyclerAdapter** to facilitate the operation of your adapter data
 

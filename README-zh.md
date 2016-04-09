@@ -14,7 +14,7 @@ WrapRecyclerView 是一个可以添加头部和尾部的RecyclerView，并且提
 如果您的项目使用 Gradle 构建, 只需要在您的`build.gradle`文件添加下面一行到 `dependencies` :
 
 ```
-	compile 'com.kevin:wraprecyclerview:1.0.3'
+	compile 'com.kevin:wraprecyclerview:1.0.5'
 ```
 
 ## 使用说明
@@ -35,12 +35,10 @@ WrapRecyclerView 是一个可以添加头部和尾部的RecyclerView，并且提
         // 获取包装类适配器，因为要用它去刷新数据
         WrapAdapter mWrapAdapter = mWrapRecyclerView.getAdapter();
 
-- 通过 **真实适配器** 更改数据并且使用 **适配器包装** 通知数据变更
+- 通过 **真实适配器** 更改数据
 
 		// 数据适配器设置数据
         mAdapter.setItemLists(pictureData.pictures);
-		// 包装类适配器刷新数据
-        mWrapAdapter.notifyDataSetChanged();
 
 - 还提供了一个 **BaseRecyclerAdapter** 来方便您对适配器数据的操作
 
