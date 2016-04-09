@@ -5,13 +5,7 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.util.AttributeSet;
-import android.view.Gravity;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.LinearLayout;
-import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,6 +26,11 @@ public class WrapRecyclerView extends RecyclerView {
     private WrapAdapter mWrapAdapter;
     private boolean shouldAdjustSpanSize;
 
+    // 临时头部View集合,用于存储没有设置Adapter之前添加的头部
+    private ArrayList<View> mTmpHeaderView = new ArrayList<>();
+    // 临时尾部View集合,用于存储没有设置Adapter之前添加的尾部
+    private ArrayList<View> mTmpFooterView = new ArrayList<>();
+
     public WrapRecyclerView(Context context) {
         super(context);
     }
@@ -51,6 +50,20 @@ public class WrapRecyclerView extends RecyclerView {
             super.setAdapter(adapter);
         } else {
             mWrapAdapter = new WrapAdapter(adapter);
+            for(View view : mTmpHeaderView) {
+                mWrapAdapter.addHeaderView(view);
+            }
+            if(mTmpHeaderView.size() > 0) {
+                mTmpHeaderView.clear();
+            }
+
+            for(View view : mTmpFooterView) {
+                mWrapAdapter.addFooterView(view);
+            }
+            if(mTmpFooterView.size() > 0) {
+                mTmpFooterView.clear();
+            }
+
             super.setAdapter(mWrapAdapter);
         }
 
@@ -92,7 +105,7 @@ public class WrapRecyclerView extends RecyclerView {
         if (null == view) {
             throw new IllegalArgumentException("the view to add must not be null!");
         } else if(mWrapAdapter == null) {
-            throw new IllegalStateException("You must set a adapter before!");
+            mTmpHeaderView.add(view);
         } else {
             mWrapAdapter.addHeaderView(view);
         }
@@ -108,7 +121,7 @@ public class WrapRecyclerView extends RecyclerView {
         if (null == view) {
             throw new IllegalArgumentException("the view to add must not be null!");
         } else if(mWrapAdapter == null) {
-            throw new IllegalStateException("You must set a adapter before!");
+            mTmpFooterView.add(view);
         } else {
             mWrapAdapter.addFooterView(view);
         }
@@ -199,5 +212,40 @@ public class WrapRecyclerView extends RecyclerView {
         }
         return mWrapAdapter.getFootersCount();
     }
+
+    private final AdapterDataObserver mDataObserver = new AdapterDataObserver() {
+
+        @Override
+        public void onChanged() {
+            if (mWrapAdapter != null) {
+                mWrapAdapter.notifyDataSetChanged();
+            }
+        }
+
+        @Override
+        public void onItemRangeInserted(int positionStart, int itemCount) {
+            mWrapAdapter.notifyItemRangeInserted(positionStart, itemCount);
+        }
+
+        @Override
+        public void onItemRangeChanged(int positionStart, int itemCount) {
+            mWrapAdapter.notifyItemRangeChanged(positionStart, itemCount);
+        }
+
+        @Override
+        public void onItemRangeChanged(int positionStart, int itemCount, Object payload) {
+            mWrapAdapter.notifyItemRangeChanged(positionStart, itemCount, payload);
+        }
+
+        @Override
+        public void onItemRangeRemoved(int positionStart, int itemCount) {
+            mWrapAdapter.notifyItemRangeRemoved(positionStart, itemCount);
+        }
+
+        @Override
+        public void onItemRangeMoved(int fromPosition, int toPosition, int itemCount) {
+            mWrapAdapter.notifyItemMoved(fromPosition, toPosition);
+        }
+    };
 
 }

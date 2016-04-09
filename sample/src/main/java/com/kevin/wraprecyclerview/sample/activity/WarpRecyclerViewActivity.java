@@ -49,7 +49,8 @@ public class WarpRecyclerViewActivity extends AppCompatActivity {
 //        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         mWrapRecyclerView.setLayoutManager(new StaggeredGridLayoutManager(3, StaggeredGridLayoutManager.VERTICAL));
 //        mRecyclerView.setLayoutManager(new GridLayoutManager(this, 3));
-
+//        addHeaderView();
+//        addFooterView();
         // 创建数据适配器
         mAdapter = new PictureAdapter(this);
         mWrapRecyclerView.setAdapter(mAdapter);
@@ -109,7 +110,7 @@ public class WarpRecyclerViewActivity extends AppCompatActivity {
         LayoutInflater inflater = LayoutInflater.from(this);
         FrameLayout layout = (FrameLayout) inflater.inflate(R.layout.recycler_header, null);
         AdLoopView mAdLoopView = (AdLoopView) layout.findViewById(R.id.home_frag_rotate_vp);
-        mWrapAdapter.addHeaderView(layout);
+        mWrapRecyclerView.addHeaderView(layout);
 
         // 初始化LoopView数据
         String json = LocalFileUtils.getStringFormAsset(this, "loopview.json");
@@ -128,7 +129,7 @@ public class WarpRecyclerViewActivity extends AppCompatActivity {
         LayoutInflater inflater = LayoutInflater.from(this);
         FrameLayout layout = (FrameLayout) inflater.inflate(R.layout.recycler_header, null);
         AdLoopView mAdLoopView = (AdLoopView) layout.findViewById(R.id.home_frag_rotate_vp);
-        mWrapAdapter.addFooterView(layout);
+        mWrapRecyclerView.addFooterView(layout);
 
         // 初始化LoopView数据
         String json = LocalFileUtils.getStringFormAsset(this, "loopview.json");
