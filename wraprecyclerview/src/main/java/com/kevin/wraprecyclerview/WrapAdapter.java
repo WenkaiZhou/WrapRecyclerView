@@ -86,7 +86,7 @@ public class WrapAdapter<T extends RecyclerView.Adapter> extends RecyclerView.Ad
 	 *
 	 * @param view
 	 */
-	public void addFooterView(View view) {
+	public void addFooterView(View view, boolean reverse) {
 		if (null == view) {
 			throw new IllegalArgumentException("the view to add must not be null!");
 		}
@@ -94,11 +94,22 @@ public class WrapAdapter<T extends RecyclerView.Adapter> extends RecyclerView.Ad
 		info.view = view;
 		info.viewType = BASE_FOOTER_VIEW_TYPE + mFooterViewInfos.size();
 		mFooterViewInfos.add(info);
-		for(int i = 1; i <= mFooterViewInfos.size(); i++) {
-			FixedViewInfo fixedViewInfo = mFooterViewInfos.get(i);
-			fixedViewInfo.viewType = BASE_FOOTER_VIEW_TYPE + mFooterViewInfos.size() - i;
+		if(reverse) {
+			for(int i = 0; i < mFooterViewInfos.size(); i++) {
+				FixedViewInfo fixedViewInfo = mFooterViewInfos.get(i);
+				fixedViewInfo.viewType = BASE_FOOTER_VIEW_TYPE + mFooterViewInfos.size() - i - 1;
+			}
 		}
 		notifyDataSetChanged();
+	}
+
+	/**
+	 * Adds a footer view
+	 *
+	 * @param view
+	 */
+	public void addFooterView(View view) {
+		addFooterView(view, true);
 	}
 
 	/**
