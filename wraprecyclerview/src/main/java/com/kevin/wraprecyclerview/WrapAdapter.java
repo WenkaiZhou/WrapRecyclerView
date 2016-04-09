@@ -31,8 +31,8 @@ public class WrapAdapter<T extends RecyclerView.Adapter> extends RecyclerView.Ad
 	private static final int BASE_HEADER_VIEW_TYPE = -1 << 10;
 	private static final int BASE_FOOTER_VIEW_TYPE = -1 << 11;
 
-	private ArrayList<FixedViewInfo> mHeaderViewInfos = new ArrayList<FixedViewInfo>();
-	private ArrayList<FixedViewInfo> mFooterViewInfos = new ArrayList<FixedViewInfo>();
+	private ArrayList<FixedViewInfo> mHeaderViewInfos = new ArrayList<>();
+	private ArrayList<FixedViewInfo> mFooterViewInfos = new ArrayList<>();
 
 	/**
 	 * A class that represents a fixed view in a list, for example a header at the top
@@ -94,6 +94,10 @@ public class WrapAdapter<T extends RecyclerView.Adapter> extends RecyclerView.Ad
 		info.view = view;
 		info.viewType = BASE_FOOTER_VIEW_TYPE + mFooterViewInfos.size();
 		mFooterViewInfos.add(info);
+		for(int i = 1; i <= mFooterViewInfos.size(); i++) {
+			FixedViewInfo fixedViewInfo = mFooterViewInfos.get(i);
+			fixedViewInfo.viewType = BASE_FOOTER_VIEW_TYPE + mFooterViewInfos.size() - i;
+		}
 		notifyDataSetChanged();
 	}
 
