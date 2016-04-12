@@ -14,7 +14,7 @@ In the example, The Android-LoopView is used as rotation picture, you can use it
 If you are building with Gradle, simply add the following line to the `dependencies` section of your `build.gradle` file:
 
 ```
-	compile 'com.kevin:wraprecyclerview:1.0.5'
+	compile 'com.kevin:wraprecyclerview:1.0.6'
 ```
 
 # How to use
