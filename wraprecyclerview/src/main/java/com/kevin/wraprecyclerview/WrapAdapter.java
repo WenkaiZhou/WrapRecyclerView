@@ -109,7 +109,7 @@ public class WrapAdapter<T extends RecyclerView.Adapter> extends RecyclerView.Ad
 	 * @param view
 	 */
 	public void addFooterView(View view) {
-		addFooterView(view, true);
+		addFooterView(view, false);
 	}
 
 	/**

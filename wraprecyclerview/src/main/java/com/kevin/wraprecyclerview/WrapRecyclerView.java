@@ -130,6 +130,22 @@ public class WrapRecyclerView extends RecyclerView {
         }
     }
 
+    /**
+     * Adds a footer view
+     *
+     * @param view
+     * @param reverse
+     */
+    public void addFooterView(View view, boolean reverse) {
+        if (null == view) {
+            throw new IllegalArgumentException("the view to add must not be null!");
+        } else if(mWrapAdapter == null) {
+            mTmpFooterView.add(view);
+        } else {
+            mWrapAdapter.addFooterView(view, reverse);
+        }
+    }
+
     @Override
     public void setLayoutManager(LayoutManager layout) {
         super.setLayoutManager(layout);
