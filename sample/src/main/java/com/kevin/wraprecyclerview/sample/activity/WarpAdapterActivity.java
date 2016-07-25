@@ -1,6 +1,7 @@
 package com.kevin.wraprecyclerview.sample.activity;
 
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
@@ -9,10 +10,13 @@ import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.FrameLayout;
+import android.widget.Toast;
 
 import com.kevin.jsontool.JsonTool;
 import com.kevin.loopview.AdLoopView;
+import com.kevin.wraprecyclerview.BaseRecyclerAdapter;
 import com.kevin.wraprecyclerview.WrapAdapter;
 import com.kevin.wraprecyclerview.sample.R;
 import com.kevin.wraprecyclerview.sample.adapter.PictureAdapter;
@@ -28,6 +32,7 @@ public class WarpAdapterActivity extends AppCompatActivity {
     private RecyclerView mRecyclerView;
     // 数据适配器包装类
     private WrapAdapter<PictureAdapter> mWrapAdapter;
+    private PictureAdapter pictureAdapter;
 
     private String refreshDate, addHeader, addFooter;
 
@@ -40,6 +45,7 @@ public class WarpAdapterActivity extends AppCompatActivity {
         addFooter = getString(R.string.menu_add_footer);
 
         initViews();
+        initEvent();
     }
 
     /**
@@ -52,7 +58,7 @@ public class WarpAdapterActivity extends AppCompatActivity {
 //        mRecyclerView.setLayoutManager(new GridLayoutManager(this, 3));
 
         // 创建RecyclerView的数据适配器
-        PictureAdapter pictureAdapter = new PictureAdapter(this);
+        pictureAdapter = new PictureAdapter(this);
         // 设置将要添加的头部和尾部占据一行
         mWrapAdapter = new WrapAdapter<>(pictureAdapter);
         // 设置头部和尾部占据一行
@@ -101,6 +107,20 @@ public class WarpAdapterActivity extends AppCompatActivity {
 
         // 使用JsonTool工具将JSON数据封装到实例对象
         return JsonTool.toBean(json, PictureData.class);
+    }
+
+    private void initEvent() {
+        pictureAdapter.setOnRecyclerViewListener(new BaseRecyclerAdapter.OnRecyclerViewListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+                Toast.makeText(WarpAdapterActivity.this, "you clicked item " + position, Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public boolean onItemLongClick(int position) {
+                return false;
+            }
+        });
     }
 
     /**

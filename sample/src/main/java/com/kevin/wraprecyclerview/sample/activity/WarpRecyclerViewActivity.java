@@ -6,10 +6,13 @@ import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.FrameLayout;
+import android.widget.Toast;
 
 import com.kevin.jsontool.JsonTool;
 import com.kevin.loopview.AdLoopView;
+import com.kevin.wraprecyclerview.BaseRecyclerAdapter;
 import com.kevin.wraprecyclerview.WrapRecyclerView;
 import com.kevin.wraprecyclerview.sample.R;
 import com.kevin.wraprecyclerview.sample.adapter.PictureAdapter;
@@ -36,6 +39,7 @@ public class WarpRecyclerViewActivity extends AppCompatActivity {
         addFooter = getString(R.string.menu_add_footer);
 
         initViews();
+        initEvent();
     }
 
     /**
@@ -75,6 +79,20 @@ public class WarpRecyclerViewActivity extends AppCompatActivity {
             addFooterView();
         }
         return true;
+    }
+
+    private void initEvent() {
+        mAdapter.setOnRecyclerViewListener(new BaseRecyclerAdapter.OnRecyclerViewListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+                Toast.makeText(WarpRecyclerViewActivity.this, "you clicked item " + position, Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public boolean onItemLongClick(int position) {
+                return false;
+            }
+        });
     }
 
     /**
