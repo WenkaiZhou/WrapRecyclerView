@@ -291,4 +291,14 @@ public class WrapAdapter<T extends RecyclerView.Adapter> extends RecyclerView.Ad
 			return mRealAdapter.getItemViewType(position - mHeaderViewInfos.size());
 		}
 	}
+
+	@Override
+	public void onAttachedToRecyclerView(RecyclerView recyclerView) {
+		mRealAdapter.onAttachedToRecyclerView(recyclerView);
+	}
+
+	@Override
+	public void onDetachedFromRecyclerView(RecyclerView recyclerView) {
+		mRealAdapter.onDetachedFromRecyclerView(recyclerView);
+	}
 }
